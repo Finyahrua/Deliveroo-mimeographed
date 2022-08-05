@@ -3,21 +3,23 @@ import { StyleSheet, Text, View } from "react-native";
 import { TailwindProvider } from "tailwindcss-react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-function HomeScreen() {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
+import HomeScreen from "./src/screens/HomeScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <TailwindProvider>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            headerShown={false}
+          />
         </Stack.Navigator>
       </TailwindProvider>
     </NavigationContainer>

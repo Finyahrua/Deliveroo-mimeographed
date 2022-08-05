@@ -1,10 +1,16 @@
-import { View, Text, SafeAreaView, Image } from "react-native";
+import { View, Text, SafeAreaView, Image, TextInput } from "react-native";
 import React from "react";
-import { ChevronDownIcon, UserIcon } from "react-native-heroicons/outline";
+import {
+  ChevronDownIcon,
+  UserIcon,
+  AdjustmentsIcon,
+  SearchIcon,
+} from "react-native-heroicons/outline";
+
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView className="bg-white pt-5">
+    <SafeAreaView className="bg-white pt-5 flex-1">
       {/* Header */}
       <View className="mx-4">
         <View className="flex-row items-center flex-1">
@@ -24,6 +30,13 @@ const HomeScreen = () => {
             </Text>
           </View>
           <UserIcon size={35} color="#00ccbb" />
+        </View>
+        <View className="flex-row mt-2 items-center space-x-2">
+          <View className="flex-row space-x-2 items-center flex-1 bg-gray-200 p-3">
+            <SearchIcon color="gray" size={20} />
+            <TextInput placeholder="Restaurants and cuisines" keyboardType="default" />
+          </View>
+          <AdjustmentsIcon size={25} color="#00ccbb"/>
         </View>
       </View>
     </SafeAreaView>

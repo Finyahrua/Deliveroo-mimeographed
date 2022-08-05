@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image, TextInput } from "react-native";
+import { View, Text, SafeAreaView, Image, TextInput, ScrollView } from "react-native";
 import React from "react";
 import {
   ChevronDownIcon,
@@ -6,6 +6,7 @@ import {
   AdjustmentsIcon,
   SearchIcon,
 } from "react-native-heroicons/outline";
+import CategoriesComponent from "../components/CategoriesComponent";
 
 
 const HomeScreen = () => {
@@ -31,13 +32,22 @@ const HomeScreen = () => {
           </View>
           <UserIcon size={35} color="#00ccbb" />
         </View>
+        {/* search bar */}
         <View className="flex-row mt-2 items-center space-x-2">
           <View className="flex-row space-x-2 items-center flex-1 bg-gray-200 p-3">
             <SearchIcon color="gray" size={20} />
-            <TextInput placeholder="Restaurants and cuisines" keyboardType="default" />
+            <TextInput
+              placeholder="Restaurants and cuisines"
+              keyboardType="default"
+            />
           </View>
-          <AdjustmentsIcon size={25} color="#00ccbb"/>
+          <AdjustmentsIcon size={25} color="#00ccbb" />
         </View>
+        {/* body */}
+        <ScrollView>
+          <CategoriesComponent />
+
+        </ScrollView>
       </View>
     </SafeAreaView>
   );

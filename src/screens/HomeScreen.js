@@ -1,4 +1,11 @@
-import { View, Text, SafeAreaView, Image, TextInput, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  TextInput,
+  ScrollView,
+} from "react-native";
 import React from "react";
 import {
   ChevronDownIcon,
@@ -7,7 +14,7 @@ import {
   SearchIcon,
 } from "react-native-heroicons/outline";
 import CategoriesComponent from "../components/CategoriesComponent";
-
+import FeaturedRow from "../components/FeaturedRow";
 
 const HomeScreen = () => {
   return (
@@ -44,9 +51,20 @@ const HomeScreen = () => {
           <AdjustmentsIcon size={25} color="#00ccbb" />
         </View>
         {/* body */}
-        <ScrollView>
+        <ScrollView
+          contentContainerStyle={{
+            paddingBottom: 100,
+          }}
+          showsVerticalScrollIndicator={false}
+        >
+          {/* Categories */}
           <CategoriesComponent />
-
+          {/* Featured */}
+          <FeaturedRow title="Featured" Description="featured" />
+          {/*  Tasty discounts*/}
+          <FeaturedRow title="Discounts" Description="Tasty discounts" />
+          {/*  Offers near you*/}
+          <FeaturedRow title="Offers" Description="Offers near you" />
         </ScrollView>
       </View>
     </SafeAreaView>

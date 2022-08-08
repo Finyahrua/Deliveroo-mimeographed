@@ -6,7 +6,7 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChevronDownIcon,
   UserIcon,
@@ -15,8 +15,22 @@ import {
 } from "react-native-heroicons/outline";
 import CategoriesComponent from "../components/CategoriesComponent";
 import FeaturedRow from "../components/FeaturedRow";
+import client from "../../sanity";
 
 const HomeScreen = () => {
+  const [FeaturedCategory, setFeaturedCategory] = useState([]);
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "featured"]{...,
+    restaurants[]->{
+      ...,dishes[]->
+    }}`
+      )
+      .then((data) => setFeaturedCategory(data));
+  }),
+    [];
+
   return (
     <SafeAreaView className="bg-white pt-5 flex-1">
       {/* Header */}
@@ -60,7 +74,15 @@ const HomeScreen = () => {
           {/* Categories */}
           <CategoriesComponent />
           {/* Featured */}
-          <FeaturedRow title="Featured" Description="featured" />
+          {FeaturedCategory.map((item) => (
+            <FeaturedRow
+              key={item._id}
+              id={item._id}
+              title={item.name}
+              Description={item.short_description}
+            />
+          ))}
+         
           {/*  Tasty discounts*/}
           <FeaturedRow title="Discounts" Description="Tasty discounts" />
           {/*  Offers near you*/}
